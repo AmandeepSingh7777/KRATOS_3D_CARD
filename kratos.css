@@ -1,0 +1,133 @@
+*{
+    padding:0;
+   margin:0;
+    box-sizing: border-bx;
+}
+:root{
+    --timing: 600ms;
+    --rotation: 38deg;
+}
+
+html{
+    color-scheme: dark;
+}
+.head{
+    text-shadow: 5px 2px 3px black;
+    background-image: linear-gradient(171deg, #a2511bd6, #020202);
+    text-align: center;
+    color: #f37e1a;
+}
+
+body{
+    display:grid;
+    place-content: center;
+    min-height: 100vh;
+    perspective: 1000px;
+}
+img{
+    max-width: 100%;
+}
+.god{
+    width:300px;
+   /* outline:3px solid #733b16;*/
+   /* background-image: url("kratos img/god\ of\ war.jpg");*/
+    aspect-ratio: 16/16;
+    position:relative;
+    height:32rem;
+    transform-style: preserve-3d;
+    transition: rotate  var(--timing) ease;
+    
+}
+.god:hover{
+
+    rotate: x var(--rotation);
+}
+.god::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    /* background:lime; */
+    z-index:100;
+    background-image: radial-gradient(circle,transparent 150px,black);
+  opacity:0;
+  transition: opacity var(--timing);
+}
+.god:hover::before{
+    opacity:1;
+}
+
+.god::after
+{
+    content:'';
+    position:absolute;
+    background-color: black;
+    translate: 0;
+    filter: blur(1rem);
+    inset: 80% 0.5rem 0.5rem;
+    transform:translateZ(-100px);
+    z-index: 1;
+    transition: 
+    rotate var(--timing), 
+    translate var(--timing);
+    
+}
+.god:hover::after{
+    rotate: x calc(var(--rotation)* -1);
+    translate:0 60px;
+}
+
+.bg-image{
+    position:absolute;
+    z-index:10;
+    height:100%;
+   object-fit: cover;
+    object-position: center;
+   
+}
+.logo,.front-image{
+position: absolute;
+
+}
+.logo{
+   
+    z-index: 1000;
+    margin-inline:auto;
+    inset :auto 0 1.3rem -0.1rem;
+    width:80%;
+    filter:contrast(1.2);
+    transition: var(--timing);
+    transform: translateY(-0.2rem) translateZ(20px);
+}
+.god:hover .logo {
+    inset: auto 0 -0.5rem 0;
+    margin-inline: auto;
+    scale: 1.6;
+    transform: translateY(-2rem) translateZ(20px);
+    rotate: x calc(var(--rotation)* -1);
+
+}
+.god:hover .front-image{
+    
+    transform: translateY(-2rem) translateZ(-5px);
+    rotate: x calc(var(--rotation)* -1);
+
+}
+
+
+.front-image{
+    inset: auto 0rem 1.2rem 0.5rem;
+    margin-inline: auto;
+    scale: 1.3;
+    transform-origin: bottom;
+    max-width: 135%;
+   
+    opacity: 0;
+    transition: var(--timing);
+    z-index: 100;  
+   
+}
+
+.god:hover .front-image{
+    opacity: 1;
+    
+}
